@@ -20,7 +20,7 @@ const User = () => {
   const [urgency, setUrgency] = useState([]);
   const [tickets, setTickets] = useState([]);
   const [date, setDate] = useState(null);
-  const [inputBox, setInputBox] = useState([]);
+  const [inputBox, setInputBox] = useState('');
 
   const { handleLogOut} = useContext(LoginContext)
 
@@ -175,7 +175,7 @@ const User = () => {
           </div>
           <span className="span-Input">Please provide specific details.</span>
           <div className="paddingLayer">
-            <textarea tabIndex="-1" placeholder="" className="input-Box" onChange={(e) => setInputBox(e.value)}></textarea>
+            <textarea tabIndex="-1" placeholder="" className="input-Box" value={inputBox} onChange={(e) => setInputBox(e.target.value)}></textarea>
           </div>
           <button className="ticket-submit" onClick={onSubmitForm}>
             Submit
