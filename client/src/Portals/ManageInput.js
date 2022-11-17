@@ -1,5 +1,5 @@
 import DataTable from "../Components 2/DataTable"
-import { ReactDOM } from "react"
+import  ReactDOM  from "react-dom"
 const Manage = ({ close, open }) => {
 
 
@@ -7,15 +7,15 @@ const Manage = ({ close, open }) => {
     return ReactDOM.createPortal(
         <><div className="over-lay">
             <div className="module-box">
-                <div className="header-profile">
+                <div >
                     
                     <button onClick={() => close()}>X</button>
                 </div>
-                <DataTable />
+                {/* <DataTable /> */}
                 <button>save changes</button>
             </div>
         </div>
-        </>, document.getElementById('Data_Table'))
+        </>, document.getElementById('portal'))
 }
 
 export default Manage
