@@ -17,10 +17,10 @@ import axios from "axios";
 
 const Tech = () => {
 
-  const {user} = useContext(LoginContext)
+  const { user } = useContext(LoginContext)
 
   const { tickets, setTickets } = useContext(TechPageContext);
-  const { open, setOpen} = useContext(TechContext)
+  const { open, setOpen } = useContext(TechContext)
 
   const [searchText, setSearchText] = useState("");
 
@@ -49,8 +49,8 @@ const Tech = () => {
 
       const { data } = await axios.get(
         `https://taskappapi.onrender.com/tech/Tickets/campus/${user.campus_id}`
-        );
-        console.log(data)
+      );
+      console.log(data)
 
 
       setTickets(data);
@@ -101,17 +101,17 @@ const Tech = () => {
                 })
                 .map((tickets) => {
                   return (
-                  <Link to={`/tech/${tickets.ticket_id}`} className="ticket-link">
-                    <article
-                      className="ticket claimed-oneticket"
-                      key={tickets.ticket_id}
-                    >
-                      
-                      <h4 className="ticketNumber">Ticket {tickets.ticket_id}</h4>
-                      <p className="ticketCat">Category: {tickets.category}</p>
-                      <p className="ticketDescription">Status: {tickets.status}</p>
-                    </article>
-                  </Link>
+                    <Link to={`/tech/${tickets.ticket_id}`} className="ticket-link">
+                      <article
+                        className="ticket claimed-oneticket"
+                        key={tickets.ticket_id}
+                      >
+
+                        <h4 className="ticketNumber">Ticket {tickets.ticket_id}</h4>
+                        <p className="ticketCat">Category: {tickets.category}</p>
+                        <p className="ticketDescription">Status: {tickets.status}</p>
+                      </article>
+                    </Link>
                   );
                 })}
             </div>
@@ -135,15 +135,15 @@ const Tech = () => {
                 .map((tickets) => {
                   return (
                     <Link to={`/tech/${tickets.ticket_id}`} className="ticket-link">
-                    <article
-                      className="ticket unclaimed-oneticket"
-                      key={tickets.ticket_id}
-                    >
-                      
-                      <h4 className="ticketNumber">Ticket {tickets.ticket_id}</h4>
-                      <p className="ticketCat">Category: {tickets.category}</p>
-                      <p className="ticketDescription">Status: {tickets.priority}</p>
-                    </article>
+                      <article
+                        className="ticket unclaimed-oneticket"
+                        key={tickets.ticket_id}
+                      >
+
+                        <h4 className="ticketNumber">Ticket {tickets.ticket_id}</h4>
+                        <p className="ticketCat">Category: {tickets.category}</p>
+                        <p className="ticketDescription">Status: {tickets.priority}</p>
+                      </article>
                     </Link>
                   );
                 })}

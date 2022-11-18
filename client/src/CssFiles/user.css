@@ -6,73 +6,73 @@
     -webkit-tap-highlight-color: transparent;
 } */
 
-.main-header{
+.main-header {
     color: #F07167;
 }
 
-.avatar-image{
+.avatar-image {
     margin-left: 4rem;
 }
 
 
 .ticket-submit {
-      background-color: #EA4C89;
-      border-radius: 8px;
-      border-style: none;
-      box-sizing: border-box;
-      color: #FFFFFF;
-      cursor: pointer;
-      display: inline-block;
-      font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      height: 40px;
-      line-height: 20px;
-      list-style: none;
-      margin: 0;
-      outline: none;
-      padding: 10px 16px;
-      position: relative;
-      text-align: center;
-      text-decoration: none;
-      transition: color 100ms;
-      vertical-align: baseline;
-      user-select: none;
-      -webkit-user-select: none;
-      touch-action: manipulation;
-    
-    
-   
-  
+    background-color: #EA4C89;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    height: 40px;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    outline: none;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+
+
+
+
 }
 
 .ticket-submit,
 .ticket-submit:focus {
-  background-color: #40798C;
+    background-color: #40798C;
 }
 
-.create-Ticket{
+.create-Ticket {
     color: #000000;
     text-decoration: none;
-    font-family: 'Arial',Arial;
+    font-family: 'Arial', Arial;
     font-size: 18.0pt;
     font-style: normal;
     font-weight: 400;
 }
 
-.span-category{
+.span-category {
     color: #000000;
     text-decoration: none;
-    font-family: 'Arial',Arial;
+    font-family: 'Arial', Arial;
     font-size: 10.5pt;
     font-style: normal;
     font-weight: 700;
 }
 
-.date-Span{
+.date-Span {
     color: #000000;
     text-decoration: none;
-    font-family: 'Arial',Arial;
+    font-family: 'Arial', Arial;
     font-size: 10.5pt;
     font-style: normal;
     font-weight: 700;
@@ -87,26 +87,26 @@ option {
     padding: 0px 2px 1px;
 }
 
-.ticket-Creation-Container{
+.ticket-Creation-Container {
     margin-left: 4rem;
 }
 
-#urgency-Span{
+#urgency-Span {
     color: #000000;
     text-decoration: none;
-    font-family: 'Arial',Arial;
+    font-family: 'Arial', Arial;
     font-size: 10.5pt;
     font-style: normal;
     font-weight: 700;
 }
 
-.category-Drop{
+.category-Drop {
     margin-top: .6rem;
     margin-bottom: .8rem;
     width: 300px;
 }
 
-.urgency-Drop{
+.urgency-Drop {
     margin-top: .6rem;
     width: 300px;
     margin-bottom: .9rem;
@@ -121,7 +121,7 @@ option {
 .span-Input {
     color: #000000;
     text-decoration: none;
-    font-family: 'Arial',Arial;
+    font-family: 'Arial', Arial;
     font-size: 10.5pt;
     font-style: normal;
     font-weight: 700;
@@ -136,12 +136,13 @@ option {
     margin-bottom: .9rem;
 }
 
-.ticket-Table{
+.ticket-Table {
     width: 800px;
     margin-left: 2rem;
     margin-bottom: 5rem;
     float: none;
 }
+
 .card {
     text-align: center;
 }
@@ -151,8 +152,15 @@ option {
     justify-content: space-evenly;
 
 }
-.user-main{
+
+.user-main {
     margin-left: 15rem;
     display: flex;
     flex-direction: column;
+}
+
+.test-img {
+    width: 6rem;
+    height: 5rem;
+    border-radius: 50%;
 }

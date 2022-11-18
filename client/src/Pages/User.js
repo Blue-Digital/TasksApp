@@ -14,8 +14,8 @@ import { Dropdown } from "primereact/dropdown";
 import { Calendar } from "primereact/calendar";
 
 const User = () => {
-  const { fetchReq, fileState, pic , setPic} = useContext(PicContext);
-  const { handleLogOut} = useContext(LoginContext)
+  const { fetchReq, fileState, pic, setPic } = useContext(PicContext);
+  const { handleLogOut } = useContext(LoginContext)
 
   const [imageCrop, setImageCrop] = useState(false);
   const [category, setCategory] = useState([]);
@@ -26,19 +26,19 @@ const User = () => {
   const [updatePic, setUpdatePic] = useState(null)
 
 
-    //access token through sessionStorage
-    const testToken = sessionStorage.getItem("testToken");
-    //set the payload portion into a variable
-    const getPayload = testToken.split(".")[1];
-    //parse the decoded payload to access obj
-    const payloadObj = JSON.parse(atob(getPayload));
-    
-    const { iat, email, userName, user_id, profilePic } = payloadObj;
+  //access token through sessionStorage
+  const testToken = sessionStorage.getItem("testToken");
+  //set the payload portion into a variable
+  const getPayload = testToken.split(".")[1];
+  //parse the decoded payload to access obj
+  const payloadObj = JSON.parse(atob(getPayload));
+
+  const { iat, email, userName, user_id, profilePic } = payloadObj;
 
 
   //This allows us to re-render the page //
   const [submitTicket, setSubmitTicket] = useState(false);
-  const [err, setErr]  = useState({})
+  const [err, setErr] = useState({})
 
   useEffect(() => {
     //set the photo initially from databse
@@ -65,13 +65,13 @@ const User = () => {
   ];
 
 
-  useEffect(()=>{
+  useEffect(() => {
     //once imaage is uploaded on s3 bucket
     //reassign pic to pfp
     let pfp = pic
-    if(pfp === '') return
-    const renderPFP = async () =>{
-      const {data} = await axios.patch(`https://taskappapi.onrender.com/user/${user_id}`, {pfp})
+    if (pfp === '') return
+    const renderPFP = async () => {
+      const { data } = await axios.patch(`https://taskappapi.onrender.com/user/${user_id}`, { pfp })
       //setUpdatePic state to new photo once updated on db
       const newPhoto = data[0].profilepic
       setUpdatePic(newPhoto)
@@ -86,30 +86,30 @@ const User = () => {
     e.preventDefault();
     console.log(category);
     console.log(inputBox)
-try{
-  console.log(inputBox)
-  const response = await axios.post(
-    "https://taskappapi.onrender.com/User/ticket/create",
-    {
-      user_id: user_id,
-      category,
-      descrip: inputBox,
-      assigned: false,
-      priority: urgency,
-      eta: null,
-      email: email,
-      status: "in progress",
-      campus_id: 1,
-      create_date: date,
-      resolved: null,
+    try {
+      console.log(inputBox)
+      const response = await axios.post(
+        "https://taskappapi.onrender.com/User/ticket/create",
+        {
+          user_id: user_id,
+          category,
+          descrip: inputBox,
+          assigned: false,
+          priority: urgency,
+          eta: null,
+          email: email,
+          status: "in progress",
+          campus_id: 1,
+          create_date: date,
+          resolved: null,
+        }
+      );
+      setSubmitTicket(true);
+      console.log(response);
+    } catch (error) {
+      console.log(error.response.data.error)
+      if (error.response.data.error) return setErr(error.response.data.error)
     }
-  );
-  setSubmitTicket(true);
-  console.log(response);
-}catch(error){
-  console.log(error.response.data.error)
-  if (error.response.data.error) return setErr(error.response.data.error)
-}
   };
 
   const dynamicColumns = columns.map((col, i) => {
@@ -196,12 +196,12 @@ try{
               onChange={(e) => setUrgency(e.value)}
               placeholder="Select Urgency"
             />
-             {err.priorty && <p>{err.priorty}</p>}
+            {err.priorty && <p>{err.priorty}</p>}
           </div>
           <span className="date-Span">Please select Date</span>
           <div className="ticket-Date">
             <Calendar
-            className="date-Drop"
+              className="date-Drop"
               dateFormat="mm/dd/yy"
               value={date}
               onChange={(e) => setDate(e.value)}
