@@ -3,6 +3,7 @@ const pool = require("../config");
 const techRoute = express.Router();
 
 techRoute.get("/tickets/campus/:id", async (req, res) => {
+  console.log('11')
   try {
     const { id } = req.params;
     const { rows } = await pool.query(
@@ -18,19 +19,25 @@ techRoute.get("/tickets/campus/:id", async (req, res) => {
 /* Add a tech route for the single page tickets.*/
 
 techRoute.get("/ticket/:id", async (req, res) => {
+
   try {
     const { id } = req.params;
     const { rows } = await pool.query(
-      "SELECT tickets.ticket_id, tickets.priority, tickets.descrip, tickets.category, create_date, campus.name FROM tickets JOIN campus ON tickets.campus_ID = campus.campus_id WHERE ticket_id = $1",
+      "SELECT tickets.ticket_id, tickets.priority, tickets.descrip, tickets.category,tickets.user_id, TO_CHAR(create_date, 'Mon dd, yyyy'), campus.name FROM tickets JOIN campus ON tickets.campus_ID = campus.campus_id WHERE ticket_id = $1",
       [id]
     );
-    res.status(200).send(rows)
+    // second query gets the user account who made the ticket coming the query above
+    const result = await pool.query("SELECT * FROM accounts WHERE user_id=$1", [rows[0].user_id])
+    const test = result.rows[0]
+
+    res.status(200).send([...rows, test])
   } catch (err) {
     console.error(err.message)
   }
 });
 
 techRoute.get("/ticket/:id/comment", async (req, res) => {
+  console.log('33')
   try {
     const { id } = req.params;
     const { rows } = await pool.query(
@@ -44,6 +51,7 @@ techRoute.get("/ticket/:id/comment", async (req, res) => {
 });
 
 techRoute.post("/ticket/comment", async (req, res) => {
+  console.log('44')
   try {
     const { user_id, ticket_id, comment } = req.body;
     const { rows } = await pool.query(
